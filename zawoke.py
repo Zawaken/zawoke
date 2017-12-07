@@ -42,7 +42,7 @@ async def btc(ctx):
 """
 @bot.command(pass_context=True)
 async def joke(cmd, message, args):
-    with open('dadjokes.json') as jokes_file:
+    with open('jokes.json') as jokes_file:
         jokes = jokes_file.read()
         jokes = json.loads(jokes)
     joke_list = jokes['JOKES']
