@@ -3,14 +3,16 @@ import os
 import aiohttp
 import discord
 from discord.ext import commands
-from data import token
+from config import token
+from config import description
+from config import prefix
 from lxml import html
 import requests
 import secrets
 import json
 
 
-bot = commands.Bot(command_prefix='>>', description='xd')
+bot = commands.Bot(command_prefix=prefix, description=description)
 bitcoin_price_url = 'https://api.coindesk.com/v1/bpi/currentprice/BTC.json'
 data = requests.get(bitcoin_price_url).json()
 price_in_usd = data['bpi']['USD']['rate']
