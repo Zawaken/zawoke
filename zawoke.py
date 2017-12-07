@@ -63,4 +63,8 @@ async def info(ctx):
 async def hug(ctx):
     await bot.say('Ram hugged ' + ctx.message.author.mention + ' back :heart:')
 
+@bot.command(pass_context=True)
+async def kms(ctx):
+    await bot.say('kys ' + ctx.message.author.mention)
+
 bot.run(token)
