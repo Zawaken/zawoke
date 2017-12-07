@@ -1,7 +1,7 @@
 import random
 import os
-import discord
 import aiohttp
+import discord
 from discord.ext import commands
 from data import token
 from lxml import html
@@ -14,12 +14,14 @@ async def on_ready():
     print('Logged in as')
     print(bot.user.name)
 
-@bot.command()
-async def hello():
+@bot.command(pass_context=True)
+async def hello(ctx):
+    """stuff"""
     await bot.say('Hello')
 
-@bot.command()
-async def flip():
+@bot.command(pass_context=True)
+async def flip(ctx):
+    """stuff"""
     flip = random.choice(['heads', 'tails'])
     await bot.say(flip)
 
