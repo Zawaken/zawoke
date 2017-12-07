@@ -13,6 +13,7 @@ async def on_ready():
     """ canker """
     print('Logged in as')
     print(bot.user.name)
+    print(bot.user.id)
 
 @bot.command(pass_context=True)
 async def hello(ctx):
