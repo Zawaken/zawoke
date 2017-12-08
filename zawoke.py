@@ -2,17 +2,15 @@ import random
 import os
 import aiohttp
 import discord
-from discord.ext import commands
-from config import token
-from config import description
-from config import prefix
-from lxml import html
 import requests
-import secrets
+#import secrets
 import json
+import config as con
+from discord.ext import commands
+from lxml import html
 
 
-bot = commands.Bot(command_prefix=prefix, description=description)
+bot = commands.Bot(command_prefix=con.prefix, description=con.description)
 bitcoin_price_url = 'https://api.coindesk.com/v1/bpi/currentprice/BTC.json'
 data = requests.get(bitcoin_price_url).json()
 price_in_usd = data['bpi']['USD']['rate']
@@ -67,4 +65,4 @@ async def hug(ctx):
 async def kms(ctx):
     await bot.say('kys ' + ctx.message.author.mention)
 
-bot.run(token)
+bot.run(con.token)
