@@ -32,7 +32,10 @@ async def hello(ctx):
 async def flip(ctx):
     """stuff"""
     flip = random.choice(['heads', 'tails'])
-    await bot.say(flip)
+    if flip = 'heads':
+        await bot.say('```' + flip + '```' + 'https://www.marshu.com/articles/images-website/articles/presidents-on-coins/quarter-coin-head.jpg')
+    else:
+        await bot.say('```' + flip + '```' + '')
 
 @bot.command(pass_context=True)
 async def btc(ctx):
@@ -62,7 +65,19 @@ async def hug(ctx):
     await bot.say('Ram hugged ' + ctx.message.author.mention + ' back :heart:')
 
 @bot.command(pass_context=True)
+async def huguser(ctx):
+    await bot.say(ctx.message.author.mention + ' hugged ' + ctx.message.content[10:] + ' :heart:')
+
+@bot.command(pass_context=True)
 async def kms(ctx):
     await bot.say('kys ' + ctx.message.author.mention)
+
+@bot.command(pass_context=True)
+async def print(ctx):
+    await bot.say(ctx.message.content[8:])
+
+@bot.command()
+async def ctx(ctx, args):
+    await ctx.send(args)
 
 bot.run(con.token)
