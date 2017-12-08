@@ -21,7 +21,7 @@ async def on_ready():
     print('Logged in as')
     print(bot.user.name)
     print(bot.user.id)
-    await bot.change_presence(game=discord.Game(name='with herself'))
+    await bot.change_presence(game=discord.Game(name=con.game))
 
 @bot.command(pass_context=True)
 async def hello(ctx):
