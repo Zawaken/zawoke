@@ -1,19 +1,20 @@
-import random
 #import os
+""" . """
+import random
 #import aiohttp
-import discord
 import requests
 #import secrets
 #import json
 import config as con
+import discord
 from discord.ext import commands
 #from lxml import html
 
 
 bot = commands.Bot(command_prefix=con.prefix, description=con.description)
-bitcoin_price_url = 'https://api.coindesk.com/v1/bpi/currentprice/BTC.json'
-data = requests.get(bitcoin_price_url).json()
-price_in_usd = data['bpi']['USD']['rate']
+BITCOIN_PRICE_URL = 'https://api.coindesk.com/v1/bpi/currentprice/BTC.json'
+DATA = requests.get(BITCOIN_PRICE_URL).json()
+PRICE_IN_USD = DATA['bpi']['USD']['rate']
 
 @bot.event
 async def on_ready():
@@ -25,12 +26,12 @@ async def on_ready():
 
 
 @bot.command(pass_context=True)
-async def hello(ctx):
+async def hello():
     """stuff"""
     await bot.say('Hello')
 
 @bot.command(pass_context=True)
-async def flip(ctx):
+async def flip():
     """stuff"""
     coinflip = random.choice(['heads', 'tails'])
     if coinflip == 'heads':
@@ -41,9 +42,9 @@ async def flip(ctx):
         await bot.say('```' + coinflip + '```' + '')
 
 @bot.command(pass_context=True)
-async def btc(ctx):
+async def btc():
     """A command to get BTC price in USD"""
-    await bot.say('```' + 'BTC price is currently at $' + price_in_usd + ' USD' + '```')
+    await bot.say('```' + 'BTC price is currently at $' + PRICE_IN_USD + ' USD' + '```')
     #await bot.send_file(ctx.message.channel, 'btc.png')
 """
 @bot.command(pass_context=True)
@@ -65,15 +66,24 @@ async def info(ctx):
     mcontent = ctx.message.content
     if mcontent == con.prefix + 'info':
         await bot.say('Name = ' + ctx.message.author.mention)
-    else:
+    elif con.prefix + 'info <@' in mcontent:
         await bot.say('Name = ' + mcontent.replace(con.prefix + 'info', ''))
+    else:
+        await bot.say('How the hell do you expect me to find info if the info isn\'t readable?')
 
 @bot.command(pass_context=True)
 async def hug(ctx):
     """stuff"""
     mcontent = ctx.message.content
-    await bot.say(ctx.message.author.mention + ' hugged ' +
-                  mcontent.replace(con.prefix + 'hug', '') + ' :heart:')
+    if mcontent == con.prefix + 'hug':
+        await bot.say('*If ' + ctx.message.author.name +
+                      ' hugs a tree in a forest and no one' +
+                      'is around to see it, did it even happen?*')
+    elif mcontent == con.prefix + 'hug <@319005959022313483>':
+        await bot.say('Ram hugged ' + ctx.message.author.mention + ' back :heart:')
+    else:
+        await bot.say(ctx.message.author.mention + ' hugged ' +
+                      mcontent.replace(con.prefix + 'hug', '') + ' :heart:')
 
 @bot.command(pass_context=True)
 async def kms(ctx):
@@ -93,7 +103,8 @@ async def poke(ctx):
     if mcontent == con.prefix + 'poke':
         await bot.say('OwO wat dis, is it a poking? I am not feel it')
     else:
-        await bot.say(ctx.message.author.name + ' poked you, ' + mcontent.replace(con.prefix + 'poke', ''))
+        await bot.say(ctx.message.author.name + ' poked you, ' +
+                      mcontent.replace(con.prefix + 'poke', ''))
 
 @bot.command()
 async def fuck(context, arg):
@@ -101,8 +112,9 @@ async def fuck(context, arg):
     await context.send(arg)
 
 @bot.command(pass_context=True)
-async def addbtc(ctx, create_custom_emoji):
-    await ctx.create_custom_emoji(server='85475567696117760', name='btc', image='btc.png')
+async def addbtc(ctx):
+    """ I want to fix this hahah u thought i was gon say die lol """
+    await ctx.create_custom_emoji(server='', name='btc', image='btc.png')
     await bot.say('I am finnish! Perkele')
 
 bot.run(con.token)
