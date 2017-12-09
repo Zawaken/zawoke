@@ -1,4 +1,4 @@
 description = 'Zawoke'
-prefix = '>'
+prefix = '>>'
 token = 
 game =
