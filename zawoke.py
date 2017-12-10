@@ -1,20 +1,21 @@
-#import os
+# import os
 """ . """
 import random
-#import aiohttp
+# import aiohttp
 import requests
-#import secrets
-#import json
+# import secrets
+# import json
 import config as con
 import discord
 from discord.ext import commands
-#from lxml import html
+# from lxml import html
 
 
 bot = commands.Bot(command_prefix=con.prefix, description=con.description)
 BITCOIN_PRICE_URL = 'https://api.coindesk.com/v1/bpi/currentprice/BTC.json'
 DATA = requests.get(BITCOIN_PRICE_URL).json()
 PRICE_IN_USD = DATA['bpi']['USD']['rate']
+
 
 @bot.event
 async def on_ready():
@@ -30,22 +31,22 @@ async def hello():
     """stuff"""
     await bot.say('Hello')
 
+
 @bot.command(pass_context=True)
-async def flip():
-    """stuff"""
+async def flip(ctx):
+    """ ⚪ = heads, ⚫ = tails """
     coinflip = random.choice(['heads', 'tails'])
     if coinflip == 'heads':
-        await bot.say('```' + coinflip + '```' +
-                      'https://www.marshu.com/articles/images-website/articles/presidents-on-' +
-                      'coins/quarter-coin-head.jpg')
+        await bot.add_reaction(ctx.message, '⚪')
     else:
-        await bot.say('```' + coinflip + '```' + '')
+        await bot.add_reaction(ctx.message, '⚫')
+
 
 @bot.command(pass_context=True)
 async def btc():
     """A command to get BTC price in USD"""
     await bot.say('```' + 'BTC price is currently at $' + PRICE_IN_USD + ' USD' + '```')
-    #await bot.send_file(ctx.message.channel, 'btc.png')
+    # await bot.send_file(ctx.message.channel, 'btc.png')
 """
 @bot.command(pass_context=True)
 async def joke(cmd, message, args):
@@ -60,6 +61,7 @@ async def joke(cmd, message, args):
     await message.channel.send(None, embed=embed)
 """
 
+
 @bot.command(pass_context=True)
 async def info(ctx):
     """stuff"""
@@ -70,6 +72,7 @@ async def info(ctx):
         await bot.say('Name = ' + mcontent.replace(con.prefix + 'info', ''))
     else:
         await bot.say('How the hell do you expect me to find info if the info isn\'t readable?')
+
 
 @bot.command(pass_context=True)
 async def hug(ctx):
@@ -86,15 +89,29 @@ async def hug(ctx):
                       mcontent.replace(con.prefix + 'hug', '') + ' :heart:')
 
 @bot.command(pass_context=True)
+async def kys(ctx):
+    """ Kill yourself """
+    mcontent = ctx.message.content
+    if mcontent == con.prefix + 'kys':
+        print('command.kys :: no argument')
+    else:
+        await bot.say('Hey' + mcontent.replace(con.prefix +'kys', '') + ', ' +
+                      ctx.message.author.name +
+                      ' wants you to die a wonderful death inflicted by yourself!')
+
+@bot.command(pass_context=True)
 async def kms(ctx):
     """stuff"""
-    await bot.say('kys ' + ctx.message.author.mention)
+    await bot.say('kys ' + ctx.message.author.mention +
+                  '\nsuicide hotline = https://www.wikihow.com/Tie-a-Noose')
+
 
 @bot.command(pass_context=True)
 async def mprint(ctx):
     """stuff"""
     mcontent = ctx.message.content
     await bot.say(mcontent.replace(con.prefix + 'mprint', ''))
+
 
 @bot.command(pass_context=True)
 async def poke(ctx):
@@ -106,15 +123,30 @@ async def poke(ctx):
         await bot.say(ctx.message.author.name + ' poked you, ' +
                       mcontent.replace(con.prefix + 'poke', ''))
 
+
 @bot.command()
 async def fuck(context, arg):
     """stuff"""
     await context.send(arg)
+
 
 @bot.command(pass_context=True)
 async def addbtc(ctx):
     """ I want to fix this hahah u thought i was gon say die lol """
     await ctx.create_custom_emoji(server='', name='btc', image='btc.png')
     await bot.say('I am finnish! Perkele')
+
+
+@bot.command(pass_context=True)
+async def test(ctx):
+    """ tester """
+    await bot.say(ctx.message.mention.name)
+
+@bot.command(pass_context=True)
+async def eagames():
+    """ Buy our new expansion pack for 200$ to get darth vader """
+    await bot.say('```Electronic Arts is a ... \n\nTo see the rest of this message paypal' +
+                  'me $20k \n Zawaken@waifu.club```')
+
 
 bot.run(con.token)
