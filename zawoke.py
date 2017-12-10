@@ -28,9 +28,16 @@ async def on_ready():
 
 
 @bot.command(pass_context=True)
-async def hello():
+async def ping():
     """stuff"""
-    await bot.say('Hello')
+    await bot.say('Pong')
+
+
+@bot.command(pass_context=True)
+async def test(ctx):
+    """ tester """
+    print(ctx.message.author.name + ctx.message.author.id + ctx.message.content)
+    await bot.say(ctx.message.mention.name)
 
 
 @bot.command(pass_context=True)
@@ -88,12 +95,13 @@ async def hug(ctx):
         await bot.say('*If ' + ctx.message.author.name +
                       ' hugs a tree in a forest and no one' +
                       'is around to see it, did it even happen?*')
-    elif mcontent == con.prefix + 'hug <@319005959022313483>':
+    elif mcontent == con.prefix + 'hug <@' + bot.user.id + '>':
         await bot.say('Ram hugged ' + ctx.message.author.mention + ' back :heart:')
     else:
         await bot.say(ctx.message.author.mention + ' hugged ' +
                       mcontent.replace(con.prefix + 'hug', '') + ' :heart:')
         await bot.delete_message(ctx.message)
+
 
 @bot.command(pass_context=True)
 async def kys(ctx):
@@ -109,12 +117,14 @@ async def kys(ctx):
                       ' wants you to die a wonderful death inflicted by yourself!')
         await bot.delete_message(ctx.message)
 
+
 @bot.command(pass_context=True)
 async def kms(ctx):
     """stuff"""
     print(ctx.message.author.name + ctx.message.author.id + ctx.message.content)
     await bot.say('kys ' + ctx.message.author.mention +
                   '\nsuicide hotline = https://www.wikihow.com/Tie-a-Noose')
+    await bot.delete_message(ctx.message)
 
 
 @bot.command(pass_context=True)
@@ -154,17 +164,12 @@ async def addbtc(ctx, create_custom_emoji, server : discord.Server = None):
 
 
 @bot.command(pass_context=True)
-async def test(ctx):
-    """ tester """
-    print(ctx.message.author.name + ctx.message.author.id + ctx.message.content)
-    await bot.say(ctx.message.mention.name)
-
-@bot.command(pass_context=True)
 async def eagames(ctx):
     """ Buy our new expansion pack for 200$ to get darth vader """
     print(ctx.message.author.name + ctx.message.author.id + ctx.message.content)
     await bot.say('```Electronic Arts is a ... \n\nTo see the rest of this message paypal' +
                   'me $20k \n Zawaken@waifu.club```')
+
 
 @bot.command(pass_context=True)
 async def purge(ctx):
