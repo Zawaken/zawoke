@@ -2,11 +2,11 @@
 """ . """
 import random
 # import aiohttp
+import time
 import requests
 # import secrets
 # import json
 import config as con
-import time
 import discord
 from discord.ext import commands
 # from lxml import html
@@ -156,7 +156,7 @@ async def fuck(context, arg):
 """
 
 @bot.command(pass_context=True)
-async def addbtc(ctx, create_custom_emoji, server : discord.Server = None):
+async def addbtc(ctx, create_custom_emoji):
     """ I want to fix this hahah u thought i was gon say die lol """
     print(ctx.message.author.name + ctx.message.author.id + ctx.message.content)
     await create_custom_emoji(ctx.message.Server, name='btc', image='btc.png')
@@ -176,7 +176,7 @@ async def purge(ctx):
     """ Deletes the messages of the specified user. """
     print(ctx.message.author.name + ' ' + ctx.message.author.id + ' ' + ctx.message.content)
     mcont = ctx.message.content
-    if mcont == str(con.prefix + 'purge'):
+    if mcont == con.prefix + 'purge':
         await bot.delete_message(ctx.message)
         print('command.purge :: no argument')
     elif mcont == con.prefix + 'purge all':
