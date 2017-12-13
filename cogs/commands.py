@@ -1,8 +1,5 @@
 """ Commands """
-import time
 import random
-import subprocess
-import sys
 from discord.ext import commands
 import discord
 import requests
@@ -12,7 +9,7 @@ BITCOIN_PRICE_URL = 'https://api.coindesk.com/v1/bpi/currentprice/BTC.json'
 DATA = requests.get(BITCOIN_PRICE_URL).json()
 PRICE_IN_USD = DATA['bpi']['USD']['rate']
 
-class Cmds:
+class Commands:
     """Commands"""
     def __init__(self, bot):
         self.bot = bot
@@ -80,23 +77,7 @@ class Cmds:
             await self.bot.say(ctx.message.author.mention + ' hugged ' +
                                mcontent.replace(con.prefix + 'hug', '') + ' :heart:')
             await self.bot.delete_message(ctx.message)
-   
-    @commands.command(pass_context=True)
-    async def purge(self, ctx):
-        """ Deletes the messages of the specified user. """
-        print(ctx.message.author.name + ' ' + ctx.message.author.id + ' ' + ctx.message.content)
-        mcont = ctx.message.content
-        if mcont == con.prefix + 'purge':
-            await self.bot.delete_message(ctx.message)
-            print('command.purge :: no argument')
-        elif mcont == con.prefix + 'purge all':
-            await self.bot.send_message(ctx.message.channel, 'Clearing messages...')
-            time.sleep(2)
-            async for msg in self.bot.logs_from(ctx.message.channel):
-                await self.bot.delete_message(msg)
-        else:
-            print('error')
-    
+
     @commands.command(pass_context=True)
     async def kys(self, ctx):
         """ Kill yourself """
@@ -116,14 +97,6 @@ class Cmds:
         """outputs whatever argument you put after the command"""
         await self.bot.say(argumento)
 
-    @commands.command()
-    async def restart(self):
-        """Restarts the bot"""
-        await self.bot.say('*Restarting...*')
-        time.sleep(2)
-        await self.bot.logout()
-        subprocess.call([sys.executable, "alpha.py"])
-
 def setup(bot):
     """makes sure that this file is added as a Cog"""
-    bot.add_cog(Cmds(bot))
+    bot.add_cog(Commands(bot))
