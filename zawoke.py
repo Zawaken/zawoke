@@ -187,5 +187,4 @@ async def purge(ctx):
     else:
         print('error')
 
-
 bot.run(con.token)
