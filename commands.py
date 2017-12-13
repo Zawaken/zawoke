@@ -1,5 +1,8 @@
+""" Commands """
 import time
 import random
+import subprocess
+import sys
 from discord.ext import commands
 import discord
 import requests
@@ -16,7 +19,7 @@ class Cmds:
 
     @commands.command()
     async def ping(self):
-        """stuff"""
+        """Pings the bot host"""
         await self.bot.say('Pong')
 
     @commands.command(pass_context=True)
@@ -30,7 +33,7 @@ class Cmds:
 
     @commands.command(pass_context=True)
     async def info(self, ctx):
-        """stuff"""
+        """Grabs the info of the person you input"""
         print(ctx.message.author.name + ctx.message.author.id + ctx.message.content)
         mcontent = ctx.message.content
         if mcontent == con.prefix + 'info':
@@ -47,7 +50,7 @@ class Cmds:
 
     @commands.command(pass_context=True)
     async def poke(self, ctx):
-        """poker"""
+        """Poke the bot or a person"""
         print(ctx.message.author.name + ctx.message.author.id + ctx.message.content)
         mcontent = ctx.message.content
         if mcontent == con.prefix + 'poke':
@@ -61,9 +64,10 @@ class Cmds:
     async def btc(self):
         """A command to get BTC price in USD"""
         await self.bot.say('```' + 'BTC price is currently at $' + PRICE_IN_USD + ' USD' + '```')
+
     @commands.command(pass_context=True)
     async def hug(self, ctx):
-        """stuff"""
+        """Hug a person of your choice ❤"""
         print(ctx.message.author.name + ctx.message.author.id + ctx.message.content)
         mcontent = ctx.message.content
         if mcontent == con.prefix + 'hug':
@@ -76,6 +80,7 @@ class Cmds:
             await self.bot.say(ctx.message.author.mention + ' hugged ' +
                                mcontent.replace(con.prefix + 'hug', '') + ' :heart:')
             await self.bot.delete_message(ctx.message)
+   
     @commands.command(pass_context=True)
     async def purge(self, ctx):
         """ Deletes the messages of the specified user. """
@@ -91,6 +96,7 @@ class Cmds:
                 await self.bot.delete_message(msg)
         else:
             print('error')
+    
     @commands.command(pass_context=True)
     async def kys(self, ctx):
         """ Kill yourself """
@@ -106,8 +112,18 @@ class Cmds:
             await self.bot.delete_message(ctx.message)
 
     @commands.command()
-    async def fuck(self, cock: str):
-        await self.bot.say(cock)
+    async def say(self, *argumento: str):
+        """outputs whatever argument you put after the command"""
+        await self.bot.say(argumento)
+
+    @commands.command()
+    async def restart(self):
+        """Restarts the bot"""
+        await self.bot.say('*Restarting...*')
+        time.sleep(2)
+        await self.bot.logout()
+        subprocess.call([sys.executable, "alpha.py"])
 
 def setup(bot):
+    """makes sure that this file is added as a Cog"""
     bot.add_cog(Cmds(bot))
