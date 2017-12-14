@@ -35,6 +35,8 @@ class Memes():
             await self.bot.send_file(ctx.message.channel, 'img/amgry.jpg')
         elif meem == 'blechh':
             await self.bot.send_file(ctx.message.channel, 'img/cupfobleach.jpg')
+        elif meem == 'succ':
+            await self.bot.send_file(ctx.message.channel, 'img/succ.png')
         else:
             await self.bot.say('```' + meem + ' is not a meme \ntry these:\n    ' +
                                'sipp\n    sight\n    dipp\n    memesee\n    rubik\n    ' +
