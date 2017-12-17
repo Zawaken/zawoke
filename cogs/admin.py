@@ -22,30 +22,29 @@ class Admin:
             await self.bot.say('Permission Denied')
 
     @commands.command(pass_context=True)
-    async def purge(self, ctx):
-        """ Deletes the messages of the specified user. """
-        print(ctx.message.author.name + ' ' + ctx.message.author.id + ' ' + ctx.message.content)
+    async def purge(self, ctx, amount: str):
+        """Deletes the messages of the specified user (hopefully)"""
         userid = ctx.message.author.id
-        mcont = ctx.message.content
-        if mcont == con.prefix + 'purge':
+        mcontent = ctx.message.content
+        if userid == con.owner_id or userid in str(con.dev_id):
             await self.bot.delete_message(ctx.message)
-            print('command.purge :: no argument')
-        elif mcont == con.prefix + 'purge all' and userid == con.owner_id or userid in str(con.dev_id):
-            await self.bot.send_message(ctx.message.channel, 'Clearing messages...')
-            asyncio.sleep(2)
-            async for msg in self.bot.logs_from(ctx.message.channel):
-                await self.bot.delete_message(msg)
-        else:
-            print('error')
-            await self.bot.say('Permission Denied')
-"""
-    @commands.command(pass_context=True)
-    async def clear(self, ctx):
-        mcont = ctx.message.content
-        mcontr = mcont.replace(con.prefix + 'clear', '')
-        #async for mcontr in self.bot.logs_from(ctx.message.channel):
-            #await self.bot.delete_message(int(mcontr))
-"""
+            if amount == str('all'):
+                delet = await self.bot.purge_from(ctx.message.channel, limit=500)
+                await self.bot.send('Bulk cleared **{}** messages'.format(len(delet)))
+                async for msg in self.bot.logs_from(ctx.message.channel):
+                    await self.bot.delete_message(msg)
+            elif int(amount) > 0:
+                counter = 0
+                for counter in range(int(amount)):
+                    async for msg in self.bot.logs_from(ctx.message.channel):
+                        if int(counter) >= int(amount):
+                            return
+                        else:
+                            await self.bot.delete_message(msg)
+                        counter += 1
+            elif int(amount) > 0 and str('<@') in mcontent:
+                print('This is tester to check if it work')
+
 def setup(bot):
     """Makes it so Cogs actually work"""
     bot.add_cog(Admin(bot))
