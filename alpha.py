@@ -26,6 +26,13 @@ async def on_ready():
     print('------------------')
     await bot.change_presence(game=discord.Game(name=con.game))
 
+@bot.event
+async def on_message(message):
+    if 'heck' in message.content or 'frick' in message.content:
+        await bot.send_message(message.channel, 'NO SWEARING')
+
+    await bot.process_commands(message)
+
 @bot.command()
 async def load(extension_name: str):
     """Loads an extension."""
