@@ -2,9 +2,11 @@
 import random
 import time
 from discord.ext import commands
+import datetime
 import discord
 import requests
 import config as con
+from cogs import utils
 
 BITCOIN_PRICE_URL = 'https://api.coindesk.com/v1/bpi/currentprice/BTC.json'
 DATA = requests.get(BITCOIN_PRICE_URL).json()

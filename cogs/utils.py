@@ -1,6 +1,8 @@
 def setup(bot):
     return
 
+DISCORD_EPOCH = 1420070400000
+
 def ReadableTime(first, last):
     readTime = int(last-first)
     weeks   = int(readTime/604800)
