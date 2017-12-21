@@ -24,6 +24,7 @@ class Admin:
     @commands.command(pass_context=True)
     async def purge(self, ctx, amount: str):
         """Deletes the messages of the specified user (hopefully)"""
+        print(ctx.message.author.name + ' ' + ctx.message.author.id + ' ' + ctx.message.content)
         userid = ctx.message.author.id
         mcontent = ctx.message.content
         if userid == con.owner_id or userid in str(con.dev_id):

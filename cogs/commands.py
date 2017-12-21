@@ -31,7 +31,7 @@ class Commands:
     @commands.command(pass_context=True)
     async def info(self, ctx):
         """Grabs the info of the person you input"""
-        print(ctx.message.author.name + ctx.message.author.id + ctx.message.content)
+        print(ctx.message.author.name + ' ' + ctx.message.author.id + ' ' + ctx.message.content)
         mcontent = ctx.message.content
         if mcontent == con.prefix + 'info':
             await self.bot.say('Name: ' + ctx.message.author.name + '\n'
@@ -48,7 +48,7 @@ class Commands:
     @commands.command(pass_context=True)
     async def poke(self, ctx):
         """Poke the bot or a person"""
-        print(ctx.message.author.name + ctx.message.author.id + ctx.message.content)
+        print(ctx.message.author.name + ' ' + ctx.message.author.id + ' ' + ctx.message.content)
         mcontent = ctx.message.content
         if mcontent == con.prefix + 'poke':
             await self.bot.say('OwO wat dis, is it a poking?')
@@ -65,7 +65,7 @@ class Commands:
     @commands.command(pass_context=True)
     async def hug(self, ctx):
         """Hug a person of your choice ❤"""
-        print(ctx.message.author.name + ctx.message.author.id + ctx.message.content)
+        print(ctx.message.author.name + ' ' + ctx.message.author.id + ' ' + ctx.message.content)
         mcontent = ctx.message.content
         if mcontent == con.prefix + 'hug':
             await self.bot.say('*If ' + ctx.message.author.name +
@@ -81,7 +81,7 @@ class Commands:
     @commands.command(pass_context=True)
     async def kys(self, ctx):
         """ Kill yourself """
-        print(ctx.message.author.name + ctx.message.author.id + ctx.message.content)
+        print(ctx.message.author.name + ' ' + ctx.message.author.id + ' ' + ctx.message.content)
         mcontent = ctx.message.content
         if mcontent == con.prefix + 'kys':
             print('command.kys :: no argument')

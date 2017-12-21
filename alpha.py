@@ -8,7 +8,6 @@ STARTUP_EXTENSIONS = ["cogs.commands", "cogs.admin", "cogs.memes"]
 
 bot = commands.Bot(command_prefix=con.prefix, description=con.description)
 
-
 @bot.event
 async def on_ready():
     """ canker """
@@ -28,8 +27,9 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
+    """ NO SWEARING IN MY CRISTIAN SERVER """
     if 'heck' in message.content or 'frick' in message.content:
-        await bot.send_message(message.channel, 'NO SWEARING')
+        await bot.send_file(message.channel, 'img/noswearing.jpg')
 
     await bot.process_commands(message)
 
