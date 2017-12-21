@@ -1,10 +1,12 @@
 """ Zawoke """
 import os
+import time
 import discord
 from discord.ext import commands
 import config as con
+from cogs import utils
 
-STARTUP_EXTENSIONS = ["cogs.commands", "cogs.admin", "cogs.memes"]
+STARTUP_EXTENSIONS = ["cogs.commands", "cogs.admin", "cogs.memes", "cogs.uptime"]
 
 bot = commands.Bot(command_prefix=con.prefix, description=con.description)
 

@@ -1,5 +1,6 @@
 """ Commands """
 import random
+import time
 from discord.ext import commands
 import discord
 import requests
@@ -13,6 +14,7 @@ class Commands:
     """Commands"""
     def __init__(self, bot):
         self.bot = bot
+        self.startTime = int(time.time())
 
     @commands.command()
     async def ping(self):
