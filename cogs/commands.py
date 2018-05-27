@@ -97,7 +97,7 @@ class Commands:
             await self.bot.delete_message(ctx.message)
 
     @commands.command()
-    async def say(self, *argumento: str):
+    async def say(self, *, argumento: str):
         """outputs whatever argument you put after the command"""
         await self.bot.say(argumento)
 

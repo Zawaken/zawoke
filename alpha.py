@@ -32,7 +32,7 @@ async def on_message(message):
     """ NO SWEARING IN MY CRISTIAN SERVER """
     if 'heck' in message.content or 'frick' in message.content:
         await bot.send_file(message.channel, 'img/noswearing.jpg')
-
+        
     await bot.process_commands(message)
 
 @bot.command()
@@ -68,7 +68,7 @@ async def add(left: int, right: int):
     await bot.say(left + right)
 
 @bot.command()
-async def repeat(times: int, content='repeating...'):
+async def repeat(times: int, *, content : str):
     """Repeats a message multiple times."""
     for i in range(times):
         await bot.say(content)
