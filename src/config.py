@@ -7,7 +7,7 @@ with open('secrets.json') as json_data:
 
 prefixes = ['>>', 'zawoke ', 'z ']
 game: str = '>>'
-docker_game: str = 'in her container.'
+docker_game: str = 'in her container'
 description: str = 'Zawoke rewritten'
 docker_status: bool = os.getenv('DOCKER_MODE', False)
 
