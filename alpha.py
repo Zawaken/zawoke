@@ -35,6 +35,8 @@ async def on_message(message):
     if 'heck' in message.content or 'frick' in message.content:
         await message.add_reaction('🚫')
 
+    await bot.process_commands(message)
+
 
 if __name__ == '__main__':
     for extension in STARTUP_EXTENSIONS:
