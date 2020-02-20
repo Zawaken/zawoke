@@ -28,7 +28,10 @@ async def on_ready():
     print(f'Command prefixes: "{str(c.prefixes).strip("[]")}"')
     print(f'{bot.user.name} is currently running in {len(bot.guilds)} servers')
     print('-' * len(str(bot.user.id)))
-    await bot.change_presence(status=discord.Status.online, activity=discord.Game(c.game))
+    if c.docker_status:
+        await bot.change_presence(status=discord.Status.online, activity=discord.Game(c.docker_game))
+    else:
+        await bot.change_presence(status=discord.Status.online, activity=discord.Game(c.game))
 
 
 @bot.event

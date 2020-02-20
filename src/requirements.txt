@@ -2,4 +2,3 @@ discord.py[voice]
 cogs
 requests
 asyncio
-json

@@ -1,0 +1,15 @@
+version: "3"
+
+
+services:
+  zawoke:
+    container_name: zawoke
+    hostname: zawoke
+    restart: unless-stopped
+    image: zawoke
+    build:
+      context: .
+    environment:
+      - DOCKER_MODE=True
+    volumes:
+      - ./src:/app
