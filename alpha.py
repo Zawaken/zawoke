@@ -18,12 +18,12 @@ async def on_ready():
     """ It does this to show that the bot has been started """
     clear = lambda: os.system('clear')
     clear()
-    print('------------------')
-    print('Logged in as')
-    print(bot.user.name)
-    print(bot.user.id)
-    print('Command prefix: ' + '"' + c.prefix + '"')
-    print('------------------')
+    print('-' * len(str(bot.user.id)))
+    print('Logged in as:')
+    print(f'{bot.user.name} - {bot.user.id}')
+    print(f'Command prefix: "{c.prefix}"')
+    print(f'{bot.user.name} is currently running on {len(bot.servers)} servers')
+    print('-' * len(str(bot.user.id)))
     await bot.change_presence(status=discord.Status.online, activity=discord.Game(c.game))
 
 
