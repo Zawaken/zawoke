@@ -17,7 +17,6 @@ class AdminCog(commands.Cog, name="admin"):
         await ctx.send('lol')
 
     @commands.command(name='load', hidden=True)
-    @commands.is_owner()
     async def _load(self, ctx, *, cog: str):
         try:
             self.bot.load_extension('cogs.' + cog)
