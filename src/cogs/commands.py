@@ -32,10 +32,8 @@ class CommandsCog(commands.Cog, name="commands"):
         await ctx.send(f'```Bitcoin\'s current value is ${PRICE_IN_USD}```')
 
     @commands.command(name='roll')
-    async def _roll(self, ctx, min: int = 1, *, max: int):
+    async def _roll(self, ctx, min: int = 1, max: int = 100):
         suffix = 's'
-        if max == '':
-            max = 100
         droll = random.randint(int(min), int(max))
         if droll == 1:
             suffix = ''
