@@ -31,6 +31,16 @@ class CommandsCog(commands.Cog, name="commands"):
         PRICE_IN_USD = DATA['bpi']['USD']['rate']
         await ctx.send(f'```Bitcoin\'s current value is ${PRICE_IN_USD}```')
 
+    @commands.command(name='roll')
+    async def _roll(self, ctx, min: int = 1, *, max: int):
+        suffix = 's'
+        if max == '':
+            max = 100
+        droll = random.randint(int(min), int(max))
+        if droll == 1:
+            suffix = ''
+        await ctx.send(f'{ctx.message.author} rolls {droll} point{str(suffix)}')
+
 
 def setup(bot):
     bot.add_cog(CommandsCog(bot))
