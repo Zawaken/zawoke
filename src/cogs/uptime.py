@@ -1,7 +1,7 @@
 import asyncio
 import time
 
-import dicord
+import discord
 from discord.ext import commands
 from cogs.utils import uptime
 
