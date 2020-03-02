@@ -7,8 +7,8 @@ You can git clone the repo and run it with `python3 alpha.py` in the `/src` dire
 
 Or you can set it up with docker/docker-compose
 ```
-docker build -t zawoke .
-docker-compose up
+docker-compose build --no-cache
+docker-compose up -d
 ```
 
 Just remember to `cp ./src/example_secrets.json ./src/secrets.json` and add your bot token.
