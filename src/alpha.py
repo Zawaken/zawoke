@@ -8,7 +8,8 @@ from discord.ext import commands
 STARTUP_EXTENSIONS = [
         'cogs.admin',
         'cogs.commands',
-        'cogs.owner'
+        'cogs.owner',
+        'cogs.uptime'
         ]
 
 def get_prefix(bot, message):
