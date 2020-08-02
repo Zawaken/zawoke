@@ -1,3 +1,14 @@
 # zawoke
-This bot is basically not being worked on at all anymore. I want to rework the whole thing in the future.
+Trying my hand at doing a complete rewrite of my discord bot.
 Invite link: [Zawoke/Ram](https://discordapp.com/oauth2/authorize?client_id=319005959022313483&scope=bot&permissions=2146958591)
+## To run this bot:
+
+You can git clone the repo and run it with `python3 alpha.py` in the `/src` directory.
+
+Or you can set it up with docker/docker-compose
+```
+docker-compose build --no-cache
+docker-compose up -d
+```
+
+Just remember to `cp ./src/example_secrets.json ./src/secrets.json` and add your bot token.
