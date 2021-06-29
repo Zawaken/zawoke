@@ -13,7 +13,7 @@ class UptimeCog(commands.Cog, name="uptime"):
     @commands.command(name="uptime")
     async def _uptime(self, ctx):
         current_time = int(time.time())
-        up_time = uptime.ReadableTime(bot.bot_start_time, current_time)
+        up_time = uptime.ReadableTime(self.bot.bot_start_time, current_time)
         await ctx.send(f'I\'ve been up for {up_time}')
 
 
