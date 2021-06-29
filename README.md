@@ -1,14 +1,26 @@
 # zawoke
 Trying my hand at doing a complete rewrite of my discord bot.
-Invite link: [Zawoke/Ram](https://discordapp.com/oauth2/authorize?client_id=319005959022313483&scope=bot&permissions=2146958591)
-## To run this bot:
+<br>[Invite link](https://discordapp.com/oauth2/authorize?client_id=319005959022313483&scope=bot&permissions=2146958591)
+<br>`Zawaken#0001`
 
+## Getting started
+
+### Using an existing instance
+ - Click the invite link above.
+ - type `z help` for an introduction to zawokes commands and prefixes.
+
+### Running Zawoke yourself
+Zawoke can be hosted in two different ways.
+Do remember to copy src/example_secrets.json to src/secrets.json
+
+#### On bare metal
 You can git clone the repo and run it with `python3 alpha.py` in the `/src` directory.
 
-Or you can set it up with docker/docker-compose
+#### Docker
+
+I prefer using docker-compose to achieve this.
+
 ```
 docker-compose build --no-cache
 docker-compose up -d
 ```
-
-Just remember to `cp ./src/example_secrets.json ./src/secrets.json` and add your bot token.

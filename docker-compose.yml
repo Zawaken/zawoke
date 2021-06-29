@@ -5,7 +5,7 @@ services:
   zawoke:
     container_name: zawoke
     hostname: zawoke
-    restart: unless-stopped
+    restart: always
     image: zawoke
     build:
       context: .
