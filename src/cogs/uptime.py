@@ -9,7 +9,7 @@ class UptimeCog(commands.Cog, name="uptime"):
 
     def __init__(self, bot):
         self.bot = bot
-        self.startTime = datetime.datetime.utcnow()
+        self.startTime = time.time()
 
     @commands.command(name="uptime")
     async def _uptime(self, ctx):
