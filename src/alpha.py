@@ -37,7 +37,7 @@ async def on_ready():
 @bot.event
 async def on_message(message):
     """ No Swore in my server """
-    if message.author == bot.user or message.author.bot == True:
+    if message.author == bot.user or message.author.bot:
         return
     if 'heck' in message.content or 'frick' in message.content:
         await message.add_reaction('🚫')
