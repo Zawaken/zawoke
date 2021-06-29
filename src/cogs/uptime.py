@@ -18,4 +18,4 @@ class UptimeCog(commands.Cog, name="uptime"):
 
 
 def setup(bot):
-    bot.add_cog(uptime(bot))
+    bot.add_cog(UptimeCog(bot))
