@@ -40,5 +40,5 @@ class CommandsCog(commands.Cog, name="commands"):
         await ctx.send(f'{ctx.message.author} rolls {droll} point{str(suffix)}')
 
 
-    def setup(bot):
-        bot.add_cog(CommandsCog(bot))
+def setup(bot):
+    bot.add_cog(CommandsCog(bot))

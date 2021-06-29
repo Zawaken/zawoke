@@ -53,5 +53,5 @@ class OwnerCog(commands.Cog, name="Owner"):
             await ctx.message.add_reaction('👌')
 
 
-    def setup(bot):
-        bot.add_cog(OwnerCog(bot))
+def setup(bot):
+    bot.add_cog(OwnerCog(bot))

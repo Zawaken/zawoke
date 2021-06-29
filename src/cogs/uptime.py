@@ -17,5 +17,5 @@ class UptimeCog(commands.Cog, name="uptime"):
         await ctx.send(f'I\'ve been up for {up_time}')
 
 
-    def setup(bot):
-        bot.add_cog(uptime(bot))
+def setup(bot):
+    bot.add_cog(uptime(bot))

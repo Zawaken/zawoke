@@ -12,5 +12,5 @@ class AdminCog(commands.Cog, name="admin"):
         self.bot = bot
 
 
-    def setup(bot):
-        bot.add_cog(AdminCog(bot))
+def setup(bot):
+    bot.add_cog(AdminCog(bot))
