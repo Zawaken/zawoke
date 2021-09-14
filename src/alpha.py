@@ -5,7 +5,7 @@ import discord
 import config as c
 from discord.ext import commands
 
-STARTUP_EXTENSIONS = [
+COGS = [
         'cogs.admin',
         'cogs.commands',
         'cogs.owner'
@@ -46,7 +46,7 @@ async def on_message(message):
 
 
 if __name__ == '__main__':
-    for extension in STARTUP_EXTENSIONS:
-        bot.load_extension(extension)
+    for cog in COGS:
+        bot.load_extension(cog)
 
     bot.run(c.d['botToken'], bot=True, reconnect=True)
