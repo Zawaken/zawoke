@@ -1,0 +1,21 @@
+[package]
+name = "zawoke"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
+rand = { version = "0.8.4" }
+
+[dependencies.serenity]
+git = "https://github.com/serenity-rs/serenity"
+branch = "current"
+features = [
+  "builder",
+  "cache",
+  "framework",
+  "model",
+  "standard_framework",
+  "rustls_backend",
+  "utils",
+]

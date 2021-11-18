@@ -5,3 +5,7 @@ __pycache__
 .vscode
 robin
 everybody ignore him
+target
+Cargo.lock
+package-lock.json
+node_modules

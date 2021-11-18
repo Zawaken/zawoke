@@ -1,4 +1,8 @@
 # zawoke
+# NOT WORKING ON THIS ANYMORE, [THIS](https://github.com/Zawaken/zawoke.ts) IS THE DISCORD BOT I AM WORKING ON NOW.
+
+
+
 Trying my hand at doing a complete rewrite of my discord bot.
 <br>[Invite link](https://discordapp.com/oauth2/authorize?client_id=319005959022313483&scope=bot&permissions=2146958591)
 <br>`Zawaken#0001`
